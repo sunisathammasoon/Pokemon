@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pokemongame;
 import java.io.*;
 import java.util.*;
@@ -17,9 +13,11 @@ public class CommandParser {
     private Bag bag;
 	private Scanner commandScanner;
 	private boolean isRunning;
-
+        private RandomPoke randoms;
+        private ArrayList<Pokemon> pokemonsBag;
 	public CommandParser(PokemonFarm pokemonFarm){
 		this.pokemonFarm = pokemonFarm;
+                bag=new Bag();
 		commandScanner = new Scanner(System.in);
 		isRunning = false;
 	}
@@ -112,9 +110,31 @@ public class CommandParser {
         }
     
         private void cathPokemons(){
-            bag = new Bag();
-            bag.random();
+          int i=1;
+            while(i==1){
+                randoms = new RandomPoke();
+
+                System.out.print("What do you want find or quit ?: ");
+                String ans= this.commandScanner.next();
+                if(ans.equals("find")){
+                    this.randoms.find();
+                }
+                else if(ans.equals("quit")){
+                    
+                    int length =(this.bag).getLength();
+                   
+           
+                    for(i=0;i<length;i++){
+                        
+                        pokemonFarm.addPokemon(this.bag.getPoke(i)); 
+                    }
+               
+                    i=0;
+                }
+            }
             
         }
+            
+        }
+
     
-}

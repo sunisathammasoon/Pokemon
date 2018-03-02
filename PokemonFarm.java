@@ -24,14 +24,19 @@ public class PokemonFarm {
 
 
 	public void list(){
-		for(Pokemon pokemon: pokemons){
+		System.out.println("in farm before loop");
+                for(Pokemon pokemon : pokemons){
+                    System.out.println("in farm before use");
 			pokemon.print();
+                        System.out.println("in farm after use");
 		}
 	}
 
 	public void feed(String pokemonName){
 		if(pokemonName.equals("all")){
+                    
 			for(Pokemon pokemon: pokemons){
+                                System.out.println("loop each");
 				pokemon.eat();
 			}
 		}
@@ -60,4 +65,5 @@ public class PokemonFarm {
                         }
                 }
 	}
+        
 }
